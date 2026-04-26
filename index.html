@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بروفايلي الشخصي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* إعادة تعيين الإعدادات الافتراضية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* تنسيق الجسم بخلفية أسود OLED */
+        body {
+            background-color: #000000; /* أسود خالص */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden; /* لمنع ظهور شريط التمرير بسبب التوهج */
+        }
+
+        /* الحاوية الرئيسية */
+        .container {
+            text-align: center;
+            z-index: 10; /* عشان الكلام يبقا فوق التوهج */
+            max-width: 600px;
+        }
+
+        /* حاوية الصورة مع التوهج */
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        /* التوهج الخلفي (الدخان الملون) */
+        .profile-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%; /* أكبر من الصورة */
+            height: 120%;
+            /* الألوان التدريجية (تقدر تغيرها) */
+            background: linear-gradient(45deg, #ff0055, #00d4ff, #ff0055);
+            background-size: 400%;
+            border-radius: 50%; /* دائرية */
+            filter: blur(50px); /* أهم سطر: التأثير الضبابي */
+            opacity: 0.8; /* شفافية التوهج */
+            z-index: -1; /* خلف الصورة */
+            /* حركة الألوان */
+            animation: glowAnimation 10s linear infinite;
+        }
+
+        /* الصورة الشخصية نفسها */
+        .profile-img {
+            width: 200px; /* حجم الصورة */
+            height: 200px;
+            border-radius: 50%; /* دائرية */
+            object-fit: cover; /* عشان الصورة متتمطش */
+            border: 3px solid rgba(255, 255, 255, 0.2); /* إطار رفيع جداً */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); /* ظل بسيط للصورة */
+        }
+
+        /* حركات التوهج */
+        @keyframes glowAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* without face */
+        .name {Without face;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* التعريف الشخصي */
+        .bio {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* أزرار التواصل */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid #333;
+            transition: 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            transform: translateY(-5px);
+        }
+
+        /* تعديلات للموبايل */
+        @media (max-width: 600px) {
+            .name { font-size: 2rem; }
+            .profile-img { width: 150px; height: 150px; }
+            .profile-img-wrapper::before { filter: blur(35px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-img-wrapper">
+            <img src="profile.jpg" alt="الصورة الشخصية" class="profile-img">
+        </div>
+
+        <h1 class="name">without face</h1>
+        <p class="bio">
+           noting ever matter
+        </p>
+
+        </div>
+    </div>
+
+</body>
+</html>
